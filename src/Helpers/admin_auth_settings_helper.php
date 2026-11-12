@@ -22,8 +22,8 @@ if (!function_exists('admin_auth_settings_routes'))
 
         $routes->match(
             ['GET', 'POST'], 
-            'admin/admin-auth-settings', 
-            '\BasicApp\AdminAuthSettings\Controllers\AdminAuthSettingsController::index'
+            'admin/auth-settings', 
+            '\BasicApp\AdminAuthSettings\Controllers\AuthSettingsController::index'
         );
     }
 }
