@@ -7,6 +7,7 @@
         }
     },
     "require": {
-        "basic-app/admin-auth": "*"
+        "basic-app/admin-auth": "*",
+        "basic-app/settings": "*"
     }
 }

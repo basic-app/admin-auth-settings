@@ -5,7 +5,7 @@
  */
 namespace BasicApp\AdminAuthSettings\Settings;
 
-use BasicApp\Core\SettingsEntity;
+use BasicApp\Settings\SettingsEntity;
 use BasicApp\AdminAuth\Interfaces\AdminInterface;
 use CodeIgniter\HTTP\Files\UploadedFile;
 use BasicApp\Core\Traits\Upload;
