@@ -22,7 +22,7 @@ class LoginController extends BaseController
         ],
         'remember_me' => [
             'label' => 'Admin.Remember Me',
-            'rules' => 'in_list[1]'
+            'rules' => 'permit_empty|in_list[1]'
         ]
     ];
 
@@ -36,11 +36,11 @@ class LoginController extends BaseController
 
                 auth_login(
                     $validData['login'], 
-                    (bool) $validData['remember_me'] ?? 0,
-                     'admin'
+                    (bool) ($validData['remember_me'] ?? 0),
+                    'admin'
                 );
 
-                return redirect()->to(site_url('admin'));
+                return redirect()->to(site_url('admin'))->withCookies();
             }
             else
             {
