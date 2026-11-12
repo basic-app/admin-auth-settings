@@ -1,6 +1,8 @@
-# Basic App - Admin Auth Settings
+# Basic App
 
-## Install
+##Admin Auth Settings
+
+### Install
 
 1. Run
 
@@ -45,4 +47,10 @@ admin_auth_settings_routes($routes);
         ]
     ];
 
+```
+
+5. Run
+
+```
+php spark db:seed "BasicApp\AdminAuthSettings\Database\Seeds\DemoSeeder"
 ```
