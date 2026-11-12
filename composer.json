@@ -3,7 +3,10 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "BasicApp\\AdminAuthSettings\\": "src/"
+            "BasicApp\\AdminAuthSettings\\": "src"
         }
+    },
+    "require": {
+        "basic-app/admin-auth": "*"
     }
 }
