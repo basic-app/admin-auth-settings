@@ -3,7 +3,7 @@
  * @author Basic App Dev Team
  * @license MIT
  */
-$this->setVar('title', lang('Admin.Admin Settings'));
+$this->setVar('title', lang('Admin.Auth Settings'));
 $this->setVar('activeMenu', 'admin-settings');
 
 helper(['form']);
