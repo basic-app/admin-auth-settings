@@ -3,7 +3,7 @@
  * @author Basic App Dev Team
  * @license MIT
  */
-namespace BasicApp\Admin\Config;
+namespace BasicApp\AdminAuthSettings\Config;
 
 use CodeIgniter\Events\Events;
 use BasicApp\AdminAuthSettings\Rules\AdminAuthSettingsRules;
