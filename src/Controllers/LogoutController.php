@@ -15,6 +15,6 @@ class LogoutController extends BaseController
     {
         auth_logout('admin');
 
-        return redirect()->to(site_url('admin'));
+        return redirect()->to(site_url('admin'))->withCookies();
     }
 }
