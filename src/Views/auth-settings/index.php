@@ -24,6 +24,16 @@ helper(['form']);
 ]);?>
 
 <?= view_cell('AdminInput', [
+    'label' => $labels['email'] ?? 'email',
+    'error' => $errors['email'] ?? null,
+    'attributes' => [
+        'type' => 'email',
+        'name' => 'email',
+        'value' => set_value('email', $data->email)
+    ]
+]);?>
+
+<?= view_cell('AdminInput', [
     'label' => $labels['new_password'] ?? 'new_password',
     'error' => $errors['new_password'] ?? null,
     'attributes' => [

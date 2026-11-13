@@ -16,6 +16,7 @@ class DemoSeeder extends Seeder
         
         service('settings')->setMany([
             'AdminAuthSettings.login' => 'admin',
+            'AdminAuthSettings.email' => 'admin@example.org',
             'AdminAuthSettings.password_hash' => admin_auth_settings_encode_password('admin')
         ]);
     }

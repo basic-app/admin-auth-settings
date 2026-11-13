@@ -17,6 +17,7 @@ class AdminAuthSettings extends SettingsEntity implements AdminInterface
 
     protected $attributes = [
         'login' => null,
+        'email' => null,
         'password_hash' => null,
         'avatar_image_path' => null,
         'avatar_image_original_name' => null
@@ -28,6 +29,10 @@ class AdminAuthSettings extends SettingsEntity implements AdminInterface
             'login' => [
                 'label' => 'Admin.Login',
                 'rules' => ['max_length[255]', 'required']
+            ],
+            'email' => [
+                'label' => 'Admin.E-mail',
+                'rules' => ['max_length[255]', 'email', 'required']
             ],
             'new_password' => [
                 'label' => 'Admin.Password',
@@ -64,7 +69,7 @@ class AdminAuthSettings extends SettingsEntity implements AdminInterface
 
     public function getAdminEmail() : ?string
     {
-        return null;
+        return $this->email;
     }
 
     public function getAdminAvatarImageUrl(?string $default = null) : ?string
