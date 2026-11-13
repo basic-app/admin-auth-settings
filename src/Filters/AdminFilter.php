@@ -22,7 +22,7 @@ class AdminFilter implements FilterInterface
 
         if (!auth_user_id('admin'))
         {
-            return redirect()->to(site_url('admin/login'));
+            return redirect()->to(site_url('admin/login'))->withCookies();
         }
 
         return null;
