@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 /**
  * @author Basic App Dev Team
  * @license MIT
@@ -16,7 +17,9 @@ class AdminAuthSettingsRules
         &$error = null,
         &$field = null) : bool {
 
-        if ($value != service('adminAuth')->login)
+        $settings = new AdminAuthSettings;
+
+        if ($value != $settings->login)
         {
             $error = lang('Admin.Invalid login or password.');
 
@@ -32,10 +35,12 @@ class AdminAuthSettingsRules
         array $data,
         &$error = null,
         &$field = null) : bool {
+
+        $settings = new AdminAuthSettings;
         
         helper(['admin_auth_settings']);
 
-        if (!admin_auth_settings_validate_password($value, (string) service('adminAuth')->password_hash))
+        if (!admin_auth_settings_validate_password($value, (string) $settings->password_hash))
         {
             $error = lang('Admin.Invalid login or password.');
 

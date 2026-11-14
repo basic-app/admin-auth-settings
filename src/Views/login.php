@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 /**
  * @author Basic App Dev Team
  * @license MIT
@@ -35,7 +36,7 @@ helper(['form']);
             'attributes' => [
                 'value' => 1,
                 'name' => 'remember_me',
-                'checked' => set_checkbox('remember_me', 1, true) ? true : false
+                'checked' => set_checkbox('remember_me', '1', true) ? true : false
             ]
         ]);?>
         <?= view_cell('AdminAuthSubmit', [

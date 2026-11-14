@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 /**
  * @author Basic App Dev Team
  * @license MIT
@@ -6,12 +7,11 @@
 namespace BasicApp\AdminAuthSettings\Settings;
 
 use BasicApp\Settings\SettingsEntity;
-use BasicApp\AdminAuth\Interfaces\AdminInterface;
 use CodeIgniter\HTTP\Files\UploadedFile;
 use BasicApp\Core\Traits\Upload;
 use BasicApp\Core\Traits\UnlinkChanged;
 
-class AdminAuthSettings extends SettingsEntity implements AdminInterface
+class AdminAuthSettings extends SettingsEntity
 {
     use Upload, UnlinkChanged;
 
@@ -32,7 +32,7 @@ class AdminAuthSettings extends SettingsEntity implements AdminInterface
             ],
             'email' => [
                 'label' => 'Admin.E-mail',
-                'rules' => ['max_length[255]', 'email', 'required']
+                'rules' => ['max_length[255]', 'valid_email', 'required']
             ],
             'new_password' => [
                 'label' => 'Admin.Password',
@@ -60,42 +60,6 @@ class AdminAuthSettings extends SettingsEntity implements AdminInterface
         unset($data['new_password']);
 
         parent::fill($data);
-    }
-
-    public function getAdminName() : ?string
-    {
-        return $this->login;
-    }
-
-    public function getAdminEmail() : ?string
-    {
-        return $this->email;
-    }
-
-    public function getAdminAvatarImageUrl(?string $default = null) : ?string
-    {
-        if ($this->avatar_image_path)
-        {
-            return base_url($this->avatar_image_path);
-        }
-
-        return $default ? base_url($default) : null;
-    }
-
-    public function getAdminLogoutUrl() : ?string
-    {
-        return site_url('admin/logout');
-    }
-
-    public function getAdminAccountMenu() : array
-    {
-        return [
-            'auth-settings' => [
-                'label' => lang('Admin.Settings'),
-                'url' => site_url('admin/auth-settings'),
-                'icon' => 'fa-user'
-            ]
-        ];
     }
 
     public function setAvatarImage(UploadedFile $image)
