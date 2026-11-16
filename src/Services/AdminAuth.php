@@ -1,10 +1,12 @@
 <?php
+
 declare(strict_types=1);
 /**
  * @author Basic App Dev Team <dev@basic-app.com>
  * @license MIT
  * @link https://basic-app.com
  */
+
 namespace BasicApp\AdminAuthSettings\Services;
 
 use BasicApp\AdminAuth\Config\AdminAuth as AdminAuthConfig;
@@ -21,7 +23,7 @@ class AdminAuth implements AdminInterface
     {
         $this->authConfig = $authConfig;
 
-        $this->authSettings = new AdminAuthSettings;
+        $this->authSettings = new AdminAuthSettings();
     }
 
     public function getAdminName(): ?string
@@ -36,8 +38,7 @@ class AdminAuth implements AdminInterface
 
     public function getAdminAvatarImageUrl(?string $default = null): ?string
     {
-        if ($this->authSettings->avatar_image_path)
-        {
+        if ($this->authSettings->avatar_image_path) {
             return base_url($this->authSettings->avatar_image_path);
         }
 

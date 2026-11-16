@@ -1,9 +1,11 @@
 <?php
+
 declare(strict_types=1);
 /**
  * @author Basic App Dev Team
  * @license MIT
  */
+
 namespace BasicApp\AdminAuthSettings\Settings;
 
 use BasicApp\Settings\SettingsEntity;
@@ -13,7 +15,8 @@ use BasicApp\Core\Traits\UnlinkChanged;
 
 class AdminAuthSettings extends SettingsEntity
 {
-    use Upload, UnlinkChanged;
+    use Upload;
+    use UnlinkChanged;
 
     protected $attributes = [
         'login' => null,
@@ -23,7 +26,7 @@ class AdminAuthSettings extends SettingsEntity
         'avatar_image_original_name' => null
     ];
 
-    public function rules() : array
+    public function rules(): array
     {
         return [
             'login' => [
@@ -50,10 +53,9 @@ class AdminAuthSettings extends SettingsEntity
 
     public function fill(?array $data = null)
     {
-        if (!empty($data['new_password']))
-        {
+        if (!empty($data['new_password'])) {
             helper(['admin_auth_settings']);
-            
+
             $data['password_hash'] = admin_auth_settings_encode_password($data['new_password']);
         }
 
@@ -64,8 +66,7 @@ class AdminAuthSettings extends SettingsEntity
 
     public function setAvatarImage(UploadedFile $image)
     {
-        if ($image->isValid())
-        {
+        if ($image->isValid()) {
             $this->avatar_image_path = $this->upload($image, 'uploads/avatars');
 
             $this->avatar_image_original_name = $image->getClientName();
@@ -74,20 +75,18 @@ class AdminAuthSettings extends SettingsEntity
 
     public function setAvatarImageClear($value)
     {
-        if ($value == 1)
-        {
+        if ($value == 1) {
             $this->avatar_image_path = null;
-            
+
             $this->avatar_image_original_name = null;
         }
     }
 
-    public function save(&$errors = null) : bool
+    public function save(&$errors = null): bool
     {
         $return = parent::save($errors);
 
-        if ($return)
-        {
+        if ($return) {
             $this->unlinkChanged(['avatar_image_path']);
         }
 

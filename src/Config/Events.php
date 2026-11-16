@@ -1,9 +1,11 @@
 <?php
+
 declare(strict_types=1);
 /**
  * @author Basic App Dev Team
  * @license MIT
  */
+
 namespace BasicApp\AdminAuthSettings\Config;
 
 use CodeIgniter\Events\Events;
@@ -27,6 +29,6 @@ use Config\Validation;
  *      Events::on('create', [$myInstance, 'myMethod']);
  */
 
-Events::on('pre_system', static function(): void {
+Events::on('pre_system', static function (): void {
     config(Validation::class)->ruleSets[] = AdminAuthSettingsRules::class;
 });

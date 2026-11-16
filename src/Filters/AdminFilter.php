@@ -1,9 +1,11 @@
 <?php
+
 declare(strict_types=1);
 /**
  * @author Basic App Dev Team
  * @license MIT
  */
+
 namespace BasicApp\AdminAuthSettings\Filters;
 
 use CodeIgniter\Filters\FilterInterface;
@@ -14,15 +16,13 @@ class AdminFilter implements FilterInterface
 {
     public function before(RequestInterface $request, $arguments = null)
     {
-        if ($request->getPath() == 'admin/login')
-        {
+        if ($request->getPath() == 'admin/login') {
             return null;
         }
 
         helper(['auth']);
 
-        if (!auth_user_id('admin'))
-        {
+        if (!auth_user_id('admin')) {
             return redirect()->to(site_url('admin/login'))->withCookies();
         }
 

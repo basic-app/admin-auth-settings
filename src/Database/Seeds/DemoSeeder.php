@@ -1,9 +1,11 @@
 <?php
+
 declare(strict_types=1);
 /**
  * @author Basic App Dev Team
  * @license MIT
  */
+
 namespace BasicApp\AdminAuthSettings\Database\Seeds;
 
 use BasicApp\Core\Seeder;
@@ -14,7 +16,7 @@ class DemoSeeder extends Seeder
     public function run()
     {
         helper(['admin_auth_settings']);
-        
+
         service('settings')->setMany([
             'AdminAuthSettings.login' => 'admin',
             'AdminAuthSettings.email' => 'admin@example.org',
